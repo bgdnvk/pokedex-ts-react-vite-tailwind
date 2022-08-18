@@ -4,6 +4,7 @@ const Pagetest = () => {
     const [data, setData] = useState('')
     const [formData, setFormData] = useState('')
     const [pokemon, setPokemon] = useState('')
+    const [pokemonJson, setPokemonJson] = useState(null)
 
     const handleClick = () => {
         console.log('button clicked');
@@ -18,27 +19,31 @@ const Pagetest = () => {
         // setFormData()
     }
 
-    const handleForm = (e: React.FormEvent<HTMLFormElement>): void => {
+    const handleForm = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault()
 
         setPokemon(formData)
         setFormData('')
 
+        // setPokemonJson(await Promise.resolve(loadPokemonData(formData)))
         loadPokemonData(formData)
     }
 
-    const loadPokemonData  = async (userInput: string) => {
+    const loadPokemonData  = async (userInput: string): Promise<any> => {
         console.log(`user input: ${userInput}`);
         
         try {
             const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${userInput}`)
             const jsonData = await data.json()
             console.log(jsonData);
+            setPokemonJson(jsonData)
+            return jsonData
         } catch (error) {
             console.log(`error loading data ${error}`);
+            setPokemonJson(null)
+            return 'err'
             
         }
-
         
     }
 
@@ -60,7 +65,13 @@ const Pagetest = () => {
 
             <div>
                 <h1>my pokemon {pokemon}</h1>
-                <div>{pokemon}</div>
+                <div>{pokemonJson? pokemonJson['name']: 'Pokemon not found'}</div>
+            </div>
+
+            <div>
+                <p>pictures</p>
+                <img src={pokemonJson? 
+                    pokemonJson['sprites']['front_default']: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/132.png'}></img>
             </div>
         </div>
     )
