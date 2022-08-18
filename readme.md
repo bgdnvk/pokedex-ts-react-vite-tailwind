@@ -12,3 +12,8 @@ https://www.geeksforgeeks.org/reactjs-cors-options/
 git remote add origin https://github.com/bgdnvk/pokemon-react-vite-tailwind.git
 git branch -M main
 git push -u origin main
+
+# useeffect? n random pokemon
+https://stackoverflow.com/questions/70718940/pokemon-api-request-generate-5-pok%C3%A9mon-at-a-time
+
+https://codepen.io/xaca/pen/wveYQoq
