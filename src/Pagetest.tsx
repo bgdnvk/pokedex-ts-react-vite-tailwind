@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import PokemonForm from "./components/PokemonForm"
 import PokemonService from "./services/PokemonData"
+import NavBar from "./components/NavBar"
 
 import './pagetest.css'
 
@@ -83,6 +84,7 @@ const Pagetest = () => {
     
     return (
         <div className="container">
+            <NavBar></NavBar>
             {/* <div>first thing</div>
             <div>second thing</div>
             <button onClick={handleClick}>button clicked {data}</button> */}
