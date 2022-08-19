@@ -1,7 +1,7 @@
 interface PokemonData {
-    count?: number,
-    next?: any,
-    previous?: any,
+    count: number,
+    next: any,
+    previous: any,
     results?: Array<any>
 }
 

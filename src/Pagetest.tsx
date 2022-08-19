@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, FormEvent } from "react"
 import PokemonForm from "./components/PokemonForm"
 import PokemonService from "./services/PokemonData"
 import NavBar from "./components/NavBar"
 
 import './pagetest.css'
+import SinglePokemon from "./components/SinglePokemon"
 
 interface PokemonData {
     count?: number,
@@ -50,7 +51,7 @@ const Pagetest = () => {
         // setFormData()
     }
 
-    const handleForm = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    const handleForm = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault()
 
         setPokemon(formData)
@@ -112,14 +113,26 @@ const Pagetest = () => {
                     {allPokemon?.results? allPokemon.count: 'no pokemon'}
                 </div>
 
-                <ul>
+                <u>
+                    {allPokemon
+                    ?.results
+                    ?.slice(0, 9)
+                    ?.map((e, i) => <li key={i}>
+                        <SinglePokemon props={e}></SinglePokemon>
+                    </li>)}
+                </u>
+
+                {/* <ul>
                     {
                     allPokemon?.results
-                    ?.filter(x => x?.name.includes('n'))
+                    ?.map(e => {
+                        console.log(e)
+                        return e
+                    })
+                    ?.filter(x => x?.name.includes('p'))
                     .map((x, i) =><li key={i}>{x.name.toUpperCase()}</li>)
-                    
                     }
-                </ul>
+                </ul> */}
 
                 <ul>
                     {
