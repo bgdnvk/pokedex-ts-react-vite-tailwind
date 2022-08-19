@@ -17,3 +17,6 @@ git push -u origin main
 https://stackoverflow.com/questions/70718940/pokemon-api-request-generate-5-pok%C3%A9mon-at-a-time
 
 https://codepen.io/xaca/pen/wveYQoq
+
+# react 18 wtf
+https://beta.reactjs.org/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development

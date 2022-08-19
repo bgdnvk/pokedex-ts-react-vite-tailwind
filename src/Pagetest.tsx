@@ -1,10 +1,40 @@
 import { useState, useEffect } from "react"
+import PokemonForm from "./components/PokemonForm"
+import PokemonService from "./services/PokemonData"
+
+import './pagetest.css'
+
+interface PokemonData {
+    count?: number,
+    next?: any,
+    previous?: any,
+    results?: Array<any>
+}
+
 
 const Pagetest = () => {
     const [data, setData] = useState('')
     const [formData, setFormData] = useState('')
     const [pokemon, setPokemon] = useState('')
     const [pokemonJson, setPokemonJson] = useState(null)
+    const [allPokemon, setAllPokemon] = useState<PokemonData | null>(null)
+
+    useEffect(() => {
+        let fetchData: boolean = false
+        let data
+
+        // if (fetchData) PokemonService.getAllPokemon()
+        const getData = async () => {
+            fetchData = true
+            data = PokemonService.getAllPokemon()
+            setAllPokemon(await data)
+        }
+        
+        return () => {
+            //https://beta.reactjs.org/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development
+            getData()
+        }
+    }, [])
 
     const handleClick = () => {
         console.log('button clicked');
@@ -52,10 +82,10 @@ const Pagetest = () => {
     // }, [])
     
     return (
-        <div>
-            <div>first thing</div>
+        <div className="container">
+            {/* <div>first thing</div>
             <div>second thing</div>
-            <button onClick={handleClick}>button clicked {data}</button>
+            <button onClick={handleClick}>button clicked {data}</button> */}
 
             <form onSubmit={handleForm}>
                 <label>get pokemon</label>
@@ -73,6 +103,30 @@ const Pagetest = () => {
                 <img src={pokemonJson? 
                     pokemonJson['sprites']['front_default']: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/132.png'}></img>
             </div>
+
+            <div className="pokemonNameList">
+                <p>all pokemon count</p>
+                <div>
+                    {allPokemon?.results? allPokemon.count: 'no pokemon'}
+                </div>
+
+                <ul>
+                    {
+                    allPokemon?.results
+                    ?.filter(x => x?.name.includes('n'))
+                    .map((x, i) =><li key={i}>{x.name.toUpperCase()}</li>)
+                    
+                    }
+                </ul>
+
+                <ul>
+                    {
+                    // allPokemon?.results?.map((x, i) =><li key={i}>{x.name}</li>)
+                    }
+                </ul>
+            </div>
+
+            <PokemonForm></PokemonForm>
         </div>
     )
 }
