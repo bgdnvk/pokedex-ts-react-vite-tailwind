@@ -4,7 +4,7 @@ import PokemonService from "./services/PokemonData"
 import NavBar from "./components/NavBar"
 
 import './pagetest.css'
-import SinglePokemon from "./components/SinglePokemon"
+import PokeItem from "./components/poke-list/PokeItem"
 
 interface PokemonData {
     count?: number,
@@ -118,7 +118,7 @@ const Pagetest = () => {
                     ?.results
                     ?.slice(0, 9)
                     ?.map((e, i) => <li key={i}>
-                        <SinglePokemon name={e.name} url={e.url} pokemonId={i+1}></SinglePokemon>
+                        <PokeItem name={e.name} url={e.url} pokemonId={i+1}></PokeItem>
                     </li>)}
                 </u>
 
