@@ -3,7 +3,7 @@ import PokemonForm from "./components/PokemonForm"
 import PokemonService from "./services/PokemonData"
 import NavBar from "./components/NavBar"
 
-import './pagetest.css'
+// import './pagetest.css'
 import PokeItem from "./components/poke-list/PokeItem"
 
 interface PokemonData {
@@ -113,14 +113,14 @@ const Pagetest = () => {
                     {allPokemon?.results? allPokemon.count: 'no pokemon'}
                 </div>
 
-                <u>
+                <ul>
                     {allPokemon
                     ?.results
                     ?.slice(0, 9)
                     ?.map((e, i) => <li key={i}>
                         <PokeItem name={e.name} url={e.url} pokemonId={i+1}></PokeItem>
                     </li>)}
-                </u>
+                </ul>
 
                 {/* <ul>
                     {
