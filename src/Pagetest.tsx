@@ -118,7 +118,7 @@ const Pagetest = () => {
                     ?.results
                     ?.slice(0, 9)
                     ?.map((e, i) => <li key={i}>
-                        <SinglePokemon props={e}></SinglePokemon>
+                        <SinglePokemon name={e.name} url={e.url} pokemonId={i+1}></SinglePokemon>
                     </li>)}
                 </u>
 

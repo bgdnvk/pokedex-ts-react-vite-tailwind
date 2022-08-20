@@ -20,3 +20,7 @@ https://codepen.io/xaca/pen/wveYQoq
 
 # react 18 wtf
 https://beta.reactjs.org/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development
+
+# infinite scroll
+https://blog.logrocket.com/pagination-infinite-scroll-react-query-v3/
+https://blog.logrocket.com/whats-new-in-react-query-3/
