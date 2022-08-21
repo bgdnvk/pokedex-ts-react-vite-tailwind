@@ -1,3 +1,6 @@
+import { useState } from "react"
+import Moves from "./Moves"
+
 const Card = ({pokemonJson}: any) => {
 
     console.log('---------inside card', pokemonJson)
@@ -27,13 +30,18 @@ const Card = ({pokemonJson}: any) => {
             <p>generation: {speciesPokemondata.generation.name}</p>
             <p>About: {speciesPokemondata.flavor_text_entries[0].flavor_text}</p>
 
-            <div>
+            {/* <div>
                 <p>moves</p>
                 <ul>
                     {singlePokemonData.moves.map((e: any, _i:any) => <li key={_i}>{e.move.name}</li>)}
                 </ul>
                 <br></br>
-            </div>
+            </div> */}
+
+            
+            <Moves 
+            moves={singlePokemonData.moves}
+            ></Moves>
 
         </div>
     )

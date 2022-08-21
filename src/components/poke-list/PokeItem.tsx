@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import PokemonService from '../../services/PokemonData'
 import stringUtils from '../../utils/stringUtils'
-import Card from './Card'
+import Card from './card/Card'
 
 const PokeItem = ({name, url}: {name: string, url: string}) => {
     const [showPokemon, setShowPokemon] = useState(false)
