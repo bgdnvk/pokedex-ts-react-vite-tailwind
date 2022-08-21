@@ -20,15 +20,19 @@ const PokeItem = ({name, url}: {name: string, url: string}) => {
             console.log('data by id', pokemonDataById)
             
             
-            const getPokemonDataSpecies = await PokemonService.getPokemonData(`${pokemonDataById.species.url}`)
+            const pokemonDataSpecies = await PokemonService.getPokemonData(`${pokemonDataById.species.url}`)
 
-            console.log('data from species', getPokemonDataSpecies)
+            console.log('data from species', pokemonDataSpecies)
+
+            let combinedJson = {pokemonDataById, pokemonDataSpecies}
+
+            console.log('combined json is ',combinedJson)
             //TODO: fix returned json data
             //activate the flag to display the card
-             setShowPokemon(true)
+            setPokemonData(combinedJson)
+            
+            setShowPokemon(true)
 
-            console.log('POKEMON DATA IS',pokemonDataById);
-            setPokemonData(pokemonDataById)
         } catch(err) {
             console.log('POKEMON DATA IS ERROR',err);
         }
