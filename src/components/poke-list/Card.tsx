@@ -20,7 +20,9 @@ const Card = ({pokemonJson}: any) => {
             <img src={singlePokemonData.sprites.front_default}></img>
             <img src={singlePokemonData.sprites.back_default}></img>
             <img src={singlePokemonData.sprites.other.dream_world.front_default}></img>
-            <button>add to favourite</button>
+            <button
+            className="font-medium leading-tight text-5xl mt-0 mb-2 text-yellow-600"
+            >add to favourite</button>
             <p>name in Japanese: {speciesPokemondata.names[0].name}</p>
             <p>generation: {speciesPokemondata.generation.name}</p>
             <p>About: {speciesPokemondata.flavor_text_entries[0].flavor_text}</p>
