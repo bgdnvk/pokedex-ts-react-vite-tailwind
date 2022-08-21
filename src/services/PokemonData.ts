@@ -39,10 +39,10 @@ const getPokemonById = async (id: any): Promise<any> => {
 };
 
 const getPokemonData = async (params: any): Promise<any> => {
-  const baseUrl = 'https://pokeapi.co/api/v2/'
+  // const baseUrl = 'https://pokeapi.co/api/v2/'
 
   try{
-    const data = await fetch(`${baseUrl}${params}`)
+    const data = await fetch(`${params}`)
     const jsonData = await data.json()
     // console.log('from general data',jsonData);
     return jsonData

@@ -3,23 +3,32 @@ import PokemonService from '../../services/PokemonData'
 import stringUtils from '../../utils/stringUtils'
 import Card from './Card'
 
-const PokeItem = ({name, url, pokemonId}: {name: string, url: string, pokemonId: any}) => {
+const PokeItem = ({name, url}: {name: string, url: string}) => {
     const [showPokemon, setShowPokemon] = useState(false)
     const [pokemonData, setPokemonData]: [any, any] = useState(null)
     // const [pokemonDescription, setPokemonDescription]: [any, any] = useState(null)
-
+    
     const showButton = async () => {
         //get pokemon data
         try {
+            // const speciesId = stringUtils.getIdFromUrl(species)
             // const pokemonData = await PokemonService.getPokemonAndSpecies(`pokemon/${pokemonId}`,`pokemon-species/${pokemonId}`)
             console.log('url is ', url)
             const pokemonId = stringUtils.getIdFromUrl(url)
-            const pokemonData = await PokemonService.getPokemonAndSpecies(`pokemon/${pokemonId}`,`pokemon-species/${pokemonId}`)
-                    //activate the flag to display the card
+            const pokemonDataById = await PokemonService.getPokemonById(pokemonId)
+
+            console.log('data by id', pokemonDataById)
+            
+            
+            const getPokemonDataSpecies = await PokemonService.getPokemonData(`${pokemonDataById.species.url}`)
+
+            console.log('data from species', getPokemonDataSpecies)
+            //TODO: fix returned json data
+            //activate the flag to display the card
              setShowPokemon(true)
 
-            console.log('POKEMON DATA IS',pokemonData);
-            setPokemonData(pokemonData)
+            console.log('POKEMON DATA IS',pokemonDataById);
+            setPokemonData(pokemonDataById)
         } catch(err) {
             console.log('POKEMON DATA IS ERROR',err);
         }

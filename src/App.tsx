@@ -110,7 +110,7 @@ const App = () => {
                         // ?.slice(0-999)
                         ?.filter(e => e.name.toLowerCase().includes(formData.toLowerCase()))
                         ?.map((e, _i) => <li key={_i}>
-                            <PokeItem name={e.name} url={e.url} pokemonId={_i+1}></PokeItem>
+                            <PokeItem name={e.name} url={e.url}></PokeItem>
                             </li>)}
                     </ol>
                 </div>
