@@ -6,59 +6,51 @@ import Card from './Card'
 const PokeItem = ({name, url}: {name: string, url: string}) => {
     const [showPokemon, setShowPokemon] = useState(false)
     const [pokemonData, setPokemonData]: [any, any] = useState(null)
-    // const [pokemonDescription, setPokemonDescription]: [any, any] = useState(null)
     
-    const showButton = async () => {
+    const showCardButton = async () => {
         //get pokemon data
         try {
-            // const speciesId = stringUtils.getIdFromUrl(species)
-            // const pokemonData = await PokemonService.getPokemonAndSpecies(`pokemon/${pokemonId}`,`pokemon-species/${pokemonId}`)
+            console.log('-----inside pokeItem showButton----');
             console.log('url is ', url)
+            //get the id thro a regex functions
             const pokemonId = stringUtils.getIdFromUrl(url)
+            //get the data
             const pokemonDataById = await PokemonService.getPokemonById(pokemonId)
-
             console.log('data by id', pokemonDataById)
-            
-            
             const pokemonDataSpecies = await PokemonService.getPokemonData(`${pokemonDataById.species.url}`)
-
             console.log('data from species', pokemonDataSpecies)
 
+            //since we had to make 2 calles to the pokeapi we combine the data to pass it as a single object
             let combinedJson = {pokemonDataById, pokemonDataSpecies}
-
             console.log('combined json is ',combinedJson)
-            //TODO: fix returned json data
-            //activate the flag to display the card
+            //update the state of the data we are going to pass
             setPokemonData(combinedJson)
-            
+            //make the flag true so the pokeCard opens up
             setShowPokemon(true)
-
         } catch(err) {
             console.log('POKEMON DATA IS ERROR',err);
         }
-
     }
-
+    //if the showPokemon flag is false we don't show the card
+    //by pressing the button we load the data and pass it to the card
     if (!showPokemon){
         return(
             <div className="SinglePokemon">
                 <h1>{name}</h1>
-                <button onClick={showButton}>show pokemon</button>
+                <button onClick={showCardButton}>show pokemon</button>
             </div>
         )
     } else{
-        //property doesn't exist
-        //https://bobbyhadz.com/blog/typescript-property-does-not-exist-on-type-object#:~:text=The%20%22Property%20does%20not%20exist,type%20with%20variable%20key%20names.
+        //show the card and display a button to close it
         return (
             <div>
                 {pokemonData? 
                 <Card pokemonJson={pokemonData}></Card>
-                : 'loading'}
+                : 'loading data...'}
                 <button onClick={()=> setShowPokemon(!showPokemon)}>hide data</button>
             </div>
         )
     }
-
 }
 
 export default PokeItem
