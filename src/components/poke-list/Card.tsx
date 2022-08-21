@@ -1,19 +1,11 @@
 const Card = ({pokemonJson}: any) => {
-    //works https://pokeapi.co/api/v2/pokemon/10009/
-    //but
-    //GET https://pokeapi.co/api/v2/pokemon-species/10009 404
-    //pokedesc doesn't exist
-    console.log('inside card', pokemonJson)
+
+    console.log('---------inside card', pokemonJson)
     
-    // const [pokemonDataById, pokemonDataSpecies] = pokemonJson
     const singlePokemonData = pokemonJson.pokemonDataById
     const speciesPokemondata = pokemonJson.pokemonDataSpecies
 
     console.log('data by id',singlePokemonData)
-    
-
-
-
     console.log(pokemonJson)
     
     return(
@@ -29,7 +21,6 @@ const Card = ({pokemonJson}: any) => {
             <img src={singlePokemonData.sprites.back_default}></img>
             <img src={singlePokemonData.sprites.other.dream_world.front_default}></img>
             <button>add to favourite</button>
-            {/* <p>habitat: {pokemonDescription.habitat.name}</p> */}
             <p>name in Japanese: {speciesPokemondata.names[0].name}</p>
             <p>generation: {speciesPokemondata.generation.name}</p>
             <p>About: {speciesPokemondata.flavor_text_entries[0].flavor_text}</p>
@@ -41,7 +32,6 @@ const Card = ({pokemonJson}: any) => {
                 </ul>
                 <br></br>
             </div>
-
 
         </div>
     )
