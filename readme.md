@@ -24,3 +24,6 @@ https://beta.reactjs.org/learn/synchronizing-with-effects#how-to-handle-the-effe
 # infinite scroll
 https://blog.logrocket.com/pagination-infinite-scroll-react-query-v3/
 https://blog.logrocket.com/whats-new-in-react-query-3/
+
+# tailwind
+https://tailwind-elements.com/quick-start/
