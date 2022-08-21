@@ -11,7 +11,7 @@ const getAllPokemon = async (): Promise<PokemonData> => {
       "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0"
     );
     const jsonData = await data.json();
-    // console.log(jsonData);
+    console.log(jsonData);
     return jsonData;
   } catch (err) {
     console.log(`error loading data ${err}`);
@@ -66,6 +66,7 @@ const getPokemonAndSpecies = async (query1: any, query2: any): Promise<any> => {
     const jsonData2 = await data2.json()
     return [jsonData1, jsonData2]
   } catch (err) {
+    //error loading data SyntaxError: Unexpected token 'N', "Not Found" is not valid JSON
     console.log(`error loading data ${err}`);
     return {
         error: err

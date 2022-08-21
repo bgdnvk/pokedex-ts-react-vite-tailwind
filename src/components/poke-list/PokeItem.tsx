@@ -1,28 +1,29 @@
 import { useState } from 'react'
 import PokemonService from '../../services/PokemonData'
+import stringUtils from '../../utils/stringUtils'
 import Card from './Card'
 
 const PokeItem = ({name, url, pokemonId}: {name: string, url: string, pokemonId: any}) => {
     const [showPokemon, setShowPokemon] = useState(false)
     const [pokemonData, setPokemonData]: [any, any] = useState(null)
-    const [pokemonDescription, setPokemonDescription]: [any, any] = useState(null)
+    // const [pokemonDescription, setPokemonDescription]: [any, any] = useState(null)
 
     const showButton = async () => {
         //get pokemon data
-        const pokemonData = await PokemonService.getPokemonAndSpecies(`pokemon/${pokemonId}`,`pokemon-species/${pokemonId}`)
-        //activate the flag to display the card
-        setShowPokemon(true)
+        try {
+            // const pokemonData = await PokemonService.getPokemonAndSpecies(`pokemon/${pokemonId}`,`pokemon-species/${pokemonId}`)
+            console.log('url is ', url)
+            const pokemonId = stringUtils.getIdFromUrl(url)
+            const pokemonData = await PokemonService.getPokemonAndSpecies(`pokemon/${pokemonId}`,`pokemon-species/${pokemonId}`)
+                    //activate the flag to display the card
+             setShowPokemon(true)
 
-        console.log(pokemonData);
-        setPokemonData(pokemonData)
-        
+            console.log('POKEMON DATA IS',pokemonData);
+            setPokemonData(pokemonData)
+        } catch(err) {
+            console.log('POKEMON DATA IS ERROR',err);
+        }
 
-        //pass the data to the state
-        //so it passes it to the card comp
-        // setPokemonData(pokemonJson)
-
-        // const pokemonSpeciesJson = await PokemonService.getPokemonData(`pokemon-species/${pokemonId}`)
-        // setPokemonDescription(pokemonSpeciesJson)
     }
 
     if (!showPokemon){

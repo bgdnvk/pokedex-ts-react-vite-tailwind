@@ -2,6 +2,7 @@ import { useState, useEffect, FormEvent } from "react"
 import PokemonForm from "./components/PokemonForm"
 import PokemonService from "./services/PokemonData"
 import NavBar from "./components/NavBar"
+import stringUtils from './utils/stringUtils'
 
 // import './pagetest.css'
 import PokeItem from "./components/poke-list/PokeItem"
@@ -113,14 +114,27 @@ const Pagetest = () => {
                     {allPokemon?.results? allPokemon.count: 'no pokemon'}
                 </div>
 
-                <ul>
+                <div>
+                    <h1>filter pokemon</h1>
+                    <ul>
+                        {allPokemon
+                        ?.results
+                        ?.filter(e => e.name.toLowerCase().includes(formData.toLowerCase()))
+                        ?.map((e, _i) => <li key={_i}>
+                            <PokeItem name={e.name} url={e.url} pokemonId={_i+1}></PokeItem>
+                            </li>)}
+                    </ul>
+                </div>
+
+
+                {/* <ul>
                     {allPokemon
                     ?.results
                     ?.slice(0, 9)
                     ?.map((e, i) => <li key={i}>
                         <PokeItem name={e.name} url={e.url} pokemonId={i+1}></PokeItem>
                     </li>)}
-                </ul>
+                </ul> */}
 
                 {/* <ul>
                     {
