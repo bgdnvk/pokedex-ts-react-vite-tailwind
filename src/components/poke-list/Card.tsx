@@ -1,4 +1,8 @@
 const Card = ({pokemonJson}: any) => {
+    //works https://pokeapi.co/api/v2/pokemon/10009/
+    //but
+    //GET https://pokeapi.co/api/v2/pokemon-species/10009 404
+    //pokedesc doesn't exist
     
     const [pokemonInfo, pokemonDescription] = pokemonJson
 
