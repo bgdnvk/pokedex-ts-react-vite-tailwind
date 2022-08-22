@@ -2,7 +2,15 @@ interface PokemonData {
     count: number,
     next: any,
     previous: any,
-    results?: Array<any>
+    results: Array<object>
+}
+
+interface DataFromId {
+  [key: string]: any,
+  species?: {
+    url: string
+    [key:string]: any
+  }
 }
 
 const getAllPokemon = async (): Promise<PokemonData> => {
@@ -19,12 +27,14 @@ const getAllPokemon = async (): Promise<PokemonData> => {
         count: 0,
         next: 0,
         previous: 0,
-        results: []
+        results: [{
+          "error": `${err}`
+        }]
     }
   }
 };
 
-const getPokemonById = async (id: any): Promise<any> => {
+const getPokemonById = async (id: string): Promise<DataFromId> => {
   try {
     const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
     const jsonData = await data.json();
@@ -33,7 +43,10 @@ const getPokemonById = async (id: any): Promise<any> => {
   } catch (err) {
     console.log(`error loading data ${err}`);
     return {
-        error: err
+      "error": `${err}`,
+      species: {
+        url: 'none'
+      }
     }
   }
 };
@@ -44,10 +57,6 @@ const getPokemonData = async (params: string): Promise<any> => {
   try{
     const data = await fetch(`${params}`)
     const jsonData = await data.json()
-    console.log('GETPOKEMONDATAAAAAA from general data',jsonData);
-    //object smfh
-    console.log(typeof jsonData)
-    
     return jsonData
   } catch (err) {
     console.log(`error loading data ${err}`);
