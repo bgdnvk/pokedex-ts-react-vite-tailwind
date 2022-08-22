@@ -17,7 +17,9 @@ const PokeItem = ({name, url}: {name: string, url: string}) => {
             //get the data
             const pokemonDataById = await PokemonService.getPokemonById(pokemonId)
             console.log('data by id', pokemonDataById)
-            const pokemonDataSpecies = await PokemonService.getPokemonData(`${pokemonDataById.species.url}`)
+            console.log(typeof pokemonDataById)
+            
+            const pokemonDataSpecies = await PokemonService.getPokemonData(`${pokemonDataById?.species.url}`)
             console.log('data from species', pokemonDataSpecies)
 
             //since we had to make 2 calles to the pokeapi we combine the data to pass it as a single object

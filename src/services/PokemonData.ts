@@ -38,18 +38,21 @@ const getPokemonById = async (id: any): Promise<any> => {
   }
 };
 
-const getPokemonData = async (params: any): Promise<any> => {
+const getPokemonData = async (params: string): Promise<any> => {
   // const baseUrl = 'https://pokeapi.co/api/v2/'
 
   try{
     const data = await fetch(`${params}`)
     const jsonData = await data.json()
-    // console.log('from general data',jsonData);
+    console.log('GETPOKEMONDATAAAAAA from general data',jsonData);
+    //object smfh
+    console.log(typeof jsonData)
+    
     return jsonData
   } catch (err) {
     console.log(`error loading data ${err}`);
     return {
-        error: err
+        "error": `${err}`
     }
   }
   

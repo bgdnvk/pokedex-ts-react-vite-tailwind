@@ -27,3 +27,6 @@ https://blog.logrocket.com/whats-new-in-react-query-3/
 
 # tailwind
 https://tailwind-elements.com/quick-start/
+
+# react router
+https://reactrouter.com/docs/en/v6/getting-started/tutorial

@@ -7,9 +7,6 @@ const PokeList = ({allPokemon, formData}:{allPokemon: any, formData: any}) => {
         <div className="">
           {/* <div className="block p-6 rounded-lg shadow-lg bg-white max-w-sm"> */}
           <div className="">
-            <h1 className="text-gray-900 text-xl leading-tight font-medium mb-2">
-              filter pokemon
-            </h1>
             <ul className="grid grid-cols-2 md:grid-cols-4 gap-2 lg:grid-cols-6 gap-4 p-6">
               {allPokemon?.results
                 // ?.slice(0-999)
