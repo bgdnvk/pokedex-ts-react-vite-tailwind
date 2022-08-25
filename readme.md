@@ -30,3 +30,6 @@ https://tailwind-elements.com/quick-start/
 
 # react router
 https://reactrouter.com/docs/en/v6/getting-started/tutorial
+
+# pagination
+https://levelup.gitconnected.com/a-simple-guide-to-pagination-in-react-facd6f785bd0

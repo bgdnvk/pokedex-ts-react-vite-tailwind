@@ -39,12 +39,12 @@ const PokeItem = ({name, url, setListCss}: {name: string, url: string, setListCs
             //make the flag true so the pokeCard opens up
             setShowPokemon(true)
             //change the css of the List (css grid)
-            setListCss('grid grid-cols-2 md:grid-cols-4 gap-2')
+            setListCss('grid grid-cols-2 md:grid-cols-3 gap-2')
         } catch(err) {
             console.log('POKEMON DATA IS ERROR',err);
         }
     }
-
+    //TODO: css grid shouldn't go back to normal if one card is open
     const hideCardButton = () => {
         setShowPokemon(!showPokemon)
         setListCss('grid grid-cols-2 md:grid-cols-4 gap-2 lg:grid-cols-6 gap-4 p-6')

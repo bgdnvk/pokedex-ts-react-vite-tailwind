@@ -17,7 +17,7 @@ const Card = ({pokemonJson, refProp}: any) => {
           }
         // myRef.current?.scrollIntoView()
     } 
-
+    //scroll in when the element is created
     useEffect(() => {
         executeScroll(refProp)
     }, [])
