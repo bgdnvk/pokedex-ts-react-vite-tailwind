@@ -34,7 +34,8 @@ const NavBar = () => {
   const padding = {
     padding: 5
   }
-
+  
+  //TODO: fix router refactor app/home+outlet intergration+url params etc
   return (
     <div>
       <nav>
@@ -47,6 +48,7 @@ const NavBar = () => {
         <a href="" onClick={toPage('saved')} style={padding}>
           saved Pokemon
         </a> */}
+        <Link to={"/"} style={padding}>Home</Link>
         <Link to={"/savedpokemon"} style={padding}>Saved Pokemon</Link>
         <Link to={"/about"}style={padding}>About</Link>
       </nav>
