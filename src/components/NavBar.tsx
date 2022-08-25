@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Outlet, Link } from "react-router-dom";
 
 const NavBar = () => {
     const Home = () => (
@@ -36,8 +37,8 @@ const NavBar = () => {
 
   return (
     <div>
-      <div>
-        <a href="" onClick={toPage('home')} style={padding}>
+      <nav>
+        {/* <a href="" onClick={toPage('home')} style={padding}>
           home
         </a>
         <a href="" onClick={toPage('o3')} style={padding}>
@@ -45,10 +46,13 @@ const NavBar = () => {
         </a>
         <a href="" onClick={toPage('saved')} style={padding}>
           saved Pokemon
-        </a>
-      </div>
+        </a> */}
+        <Link to={"/savedpokemon"} style={padding}>Saved Pokemon</Link>
+        <Link to={"/about"}style={padding}>About</Link>
+      </nav>
 
-      {content()}
+      {/* {content()} */}
+      <Outlet></Outlet>
     </div>
   )
 }
