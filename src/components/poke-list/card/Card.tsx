@@ -1,6 +1,7 @@
+import { useEffect } from "react"
 import Moves from "./Moves"
 
-const Card = ({pokemonJson}: any) => {
+const Card = ({pokemonJson, refProp}: any) => {
 
     console.log('---------inside card', pokemonJson)
     
@@ -9,9 +10,20 @@ const Card = ({pokemonJson}: any) => {
 
     console.log('data by id',singlePokemonData)
     console.log(pokemonJson)
+
+    const executeScroll = (ref: { current: { scrollIntoView: (arg0: { behavior: string; block: string }) => void } } | undefined) => {
+        if (ref && ref.current /* + other conditions */) {
+            ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          }
+        // myRef.current?.scrollIntoView()
+    } 
+
+    useEffect(() => {
+        executeScroll(refProp)
+    }, [])
     
     return(
-        <div className="flex-auto">
+        <div ref={refProp} className="flex-auto">
             <h1>{singlePokemonData.name}</h1>
 
             <p>ID: {singlePokemonData.id}</p>

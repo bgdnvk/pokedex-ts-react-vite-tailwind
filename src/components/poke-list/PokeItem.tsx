@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import PokemonService from '../../services/PokemonData'
 import stringUtils from '../../utils/stringUtils'
 import Card from './card/Card'
@@ -6,6 +6,15 @@ import Card from './card/Card'
 const PokeItem = ({name, url, setListCss}: {name: string, url: string, setListCss:any}) => {
     const [showPokemon, setShowPokemon] = useState(false)
     const [pokemonData, setPokemonData]: [any, any] = useState(null)
+
+    //ref to scroll
+    const myRef = useRef(null)
+    const executeScroll = (ref: { current: { scrollIntoView: (arg0: { behavior: string; block: string }) => void } } | undefined) => {
+        if (ref && ref.current /* + other conditions */) {
+            ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          }
+        // myRef.current?.scrollIntoView()
+    } 
     
     const showCardButton = async () => {
         //get pokemon data
@@ -59,7 +68,7 @@ const PokeItem = ({name, url, setListCss}: {name: string, url: string, setListCs
                 className={'inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out'}
                 >hide data</button>
                 {pokemonData? 
-                <Card pokemonJson={pokemonData}></Card>
+                <Card refProp={myRef} pokemonJson={pokemonData}></Card>
                 : 'loading data...'}
             </div>
         )
