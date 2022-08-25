@@ -3,7 +3,7 @@ import PokemonService from '../../services/PokemonData'
 import stringUtils from '../../utils/stringUtils'
 import Card from './card/Card'
 
-const PokeItem = ({name, url}: {name: string, url: string}) => {
+const PokeItem = ({name, url, setListCss}: {name: string, url: string, setListCss:any}) => {
     const [showPokemon, setShowPokemon] = useState(false)
     const [pokemonData, setPokemonData]: [any, any] = useState(null)
     
@@ -29,9 +29,16 @@ const PokeItem = ({name, url}: {name: string, url: string}) => {
             setPokemonData(combinedJson)
             //make the flag true so the pokeCard opens up
             setShowPokemon(true)
+            //change the css of the List (css grid)
+            setListCss('grid grid-cols-2 md:grid-cols-4 gap-2')
         } catch(err) {
             console.log('POKEMON DATA IS ERROR',err);
         }
+    }
+
+    const hideCardButton = () => {
+        setShowPokemon(!showPokemon)
+        setListCss('grid grid-cols-2 md:grid-cols-4 gap-2 lg:grid-cols-6 gap-4 p-6')
     }
     //if the showPokemon flag is false we don't show the card
     //by pressing the button we load the data and pass it to the card
@@ -48,7 +55,7 @@ const PokeItem = ({name, url}: {name: string, url: string}) => {
         //show the card and display a button to close it
         return (
             <div>
-                <button onClick={()=> setShowPokemon(!showPokemon)}
+                <button onClick={hideCardButton}
                 className={'inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out'}
                 >hide data</button>
                 {pokemonData? 
