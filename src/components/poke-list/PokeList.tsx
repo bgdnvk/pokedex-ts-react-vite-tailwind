@@ -1,5 +1,5 @@
 import { Key, useState } from "react"
-import PokeItem from "./PokeItem"
+import PokeItem from "./list-item/PokeItem"
 
 const PokeList = ({allPokemon, formData}:{allPokemon: any, formData: any}) => {
   const [listCss, setListCss] = useState('grid grid-cols-2 md:grid-cols-4 gap-2 lg:grid-cols-6 gap-4 p-6')

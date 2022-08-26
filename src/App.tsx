@@ -4,7 +4,7 @@ import PokemonService from "./services/PokemonData";
 import NavBar from "./components/NavBar";
 
 import "./index.css";
-import PokeItem from "./components/poke-list/PokeItem";
+import PokeItem from "./components/poke-list/list-item/PokeItem";
 import SearchForm from "./components/forms/SearchForm";
 import PokeList from "./components/poke-list/PokeList";
 
