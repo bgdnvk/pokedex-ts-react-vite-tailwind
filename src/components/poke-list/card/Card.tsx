@@ -23,7 +23,7 @@ const Card = ({pokemonJson, refProp}: any) => {
     }, [])
     
     return(
-        <div ref={refProp} className="flex-auto">
+        <div ref={refProp} className="flex-auto scroll-mt-36">
             <h1>{singlePokemonData.name}</h1>
 
             <p>ID: {singlePokemonData.id}</p>

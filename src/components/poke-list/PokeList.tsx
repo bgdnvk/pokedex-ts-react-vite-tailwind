@@ -5,7 +5,7 @@ const PokeList = ({allPokemon, formData}:{allPokemon: any, formData: any}) => {
   const [listCss, setListCss] = useState('grid grid-cols-2 md:grid-cols-4 gap-2 lg:grid-cols-6 gap-4 p-6')
 //flex-wrap p-6 divide-y divide-slate-200 border-2 border-red-500
     return(
-        <div className="">
+        <div className="relative">
           {/* <div className="block p-6 rounded-lg shadow-lg bg-white max-w-sm"> */}
           <div className="">
             <ul className={listCss}>
