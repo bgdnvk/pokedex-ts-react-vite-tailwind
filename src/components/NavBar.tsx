@@ -38,7 +38,7 @@ const NavBar = () => {
   //TODO: fix router refactor app/home+outlet intergration+url params etc
   return (
     <div>
-      <nav>
+      <nav >
         {/* <a href="" onClick={toPage('home')} style={padding}>
           home
         </a>
@@ -48,13 +48,12 @@ const NavBar = () => {
         <a href="" onClick={toPage('saved')} style={padding}>
           saved Pokemon
         </a> */}
-        <Link to={"/"} style={padding}>Home</Link>
+        <Link to={"/"} style={padding}>Pokédex</Link>
         <Link to={"/savedpokemon"} style={padding}>Saved Pokemon</Link>
         <Link to={"/about"}style={padding}>About</Link>
       </nav>
 
       {/* {content()} */}
-      <Outlet></Outlet>
     </div>
   )
 }

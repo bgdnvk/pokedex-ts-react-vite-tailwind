@@ -1,9 +1,7 @@
 const SearchForm = ({
-    handleForm,
     handleChange,
     formData,
 }: {
-    handleForm: any;
     handleChange: any;
     formData: any;
 }) => {
@@ -11,7 +9,7 @@ const SearchForm = ({
     //TODO: add padding?
     return (
         <div className="flex justify-center sticky top-0 z-50 bg-gradient-to-r from-cyan-500 to-blue-600">
-            <form className="" onSubmit={handleForm}>
+            <form className="">
                 {/* <label className="font-medium leading-tight text-5xl mt-0 mb-2 text-blue-600">
                     Pokédex
                 </label> */}
