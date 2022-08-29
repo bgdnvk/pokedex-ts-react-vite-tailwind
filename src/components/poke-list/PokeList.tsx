@@ -1,20 +1,12 @@
 import { Key, useState } from "react";
+import { PokemonDataElement, PokemonDataElementWithUrl, PokemonJsonDataInterface } from "../../interfaces/pokemonDataInterfaces";
 import PokeItem from "./list-item/PokeItem";
-
-interface PokemonDataElement {
-  name: string,
-  url: string | null
-}
-
-export interface PokemonDataElementWithUrl extends PokemonDataElement {
-  url: string;
-}
 
 const PokeList = ({
   pokemonJsonData,
   formData,
 }: {
-  pokemonJsonData: any;
+  pokemonJsonData: PokemonJsonDataInterface | undefined;
   formData: any;
 }) => {
   const [listCss, setListCss] = useState(
@@ -25,9 +17,13 @@ const PokeList = ({
 
   return (
     <div className="relative">
-      <h1 className="m-1 p-1 text-center">
-        {formData === '' && 'Start typing to find any Pokémon!'}
-      </h1>
+      {formData === "" && (
+        <h1 className="m-1 p-1 text-center">
+          {" "}
+          'Start typing to find any Pokémon!'
+        </h1>
+      )}
+
       <ul className={listCss}>
         {pokemonJsonData?.results
           ?.filter((e: PokemonDataElement, _i: Key) => {

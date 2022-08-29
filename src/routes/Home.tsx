@@ -1,20 +1,12 @@
 import { useState, useEffect, FormEvent } from "react";
 import SearchForm from "../components/forms/SearchForm";
 import PokeList from "../components/poke-list/PokeList";
+import { PokemonJsonDataInterface } from "../interfaces/pokemonDataInterfaces";
 import PokemonService from "../services/PokemonData";
-
-interface PokemonData {
-  count: number;
-  next: any | null;
-  previous?: any | null;
-  results?: Array<any>;
-}
 
 const Home = () => {
   const [formData, setFormData] = useState("");
-  const [pokemonJsonData, setPokemonJsonData] = useState<PokemonData | null>(
-    null
-  );
+  const [pokemonJsonData, setPokemonJsonData] = useState<PokemonJsonDataInterface>();
 
   useEffect(() => {
     let fetchData: boolean = false;
