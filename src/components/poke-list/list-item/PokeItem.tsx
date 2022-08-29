@@ -5,7 +5,7 @@ import {
   PokemonByIdInterface,
   PokemonBySpeciesInterface,
 } from "../../../interfaces/pokemonDataInterfaces";
-import PokemonService from "../../../services/PokemonData";
+import PokemonService from "../../../services/pokemonDataService";
 import stringUtils from "../../../utils/stringUtils";
 import Card from "./card/Card";
 

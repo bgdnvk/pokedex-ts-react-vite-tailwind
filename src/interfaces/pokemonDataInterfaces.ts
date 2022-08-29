@@ -18,6 +18,13 @@ export interface ErrorInterface {
     error: string;
 }
 
+export interface PokemonData {
+    count: number,
+    next: any,
+    previous: any,
+    results: Array<PokemonDataElementWithUrl>
+}
+
 //----- Components -------
 // export interface PokeListInterface {
 //     pokemonJsonData: PokemonJsonDataInterface | undefined;

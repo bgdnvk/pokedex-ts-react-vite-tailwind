@@ -2,7 +2,7 @@ import { useState, useEffect, FormEvent } from "react";
 import SearchForm from "../components/forms/SearchForm";
 import PokeList from "../components/poke-list/PokeList";
 import { PokemonJsonDataInterface } from "../interfaces/pokemonDataInterfaces";
-import PokemonService from "../services/PokemonData";
+import PokemonService from "../services/pokemonDataService";
 
 const Home = () => {
   const [formData, setFormData] = useState("");
