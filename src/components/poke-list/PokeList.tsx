@@ -1,14 +1,11 @@
 import { Key, useState } from "react";
-import { PokemonDataElement, PokemonDataElementWithUrl, PokemonJsonDataInterface } from "../../interfaces/pokemonDataInterfaces";
+import { PokeListInterface, PokemonDataElement, PokemonDataElementWithUrl, PokemonJsonDataInterface } from "../../interfaces/pokemonDataInterfaces";
 import PokeItem from "./list-item/PokeItem";
 
 const PokeList = ({
   pokemonJsonData,
   formData,
-}: {
-  pokemonJsonData: PokemonJsonDataInterface | undefined;
-  formData: any;
-}) => {
+}: PokeListInterface) => {
   const [listCss, setListCss] = useState(
     "grid grid-cols-2 md:grid-cols-4 gap-2 lg:grid-cols-6 gap-4 p-6"
   );

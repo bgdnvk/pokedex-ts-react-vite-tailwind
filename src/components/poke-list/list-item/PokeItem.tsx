@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { CardInterface, PokeItemInterface } from "../../../interfaces/pokemonDataInterfaces";
 import PokemonService from "../../../services/PokemonData";
 import stringUtils from "../../../utils/stringUtils";
 import Card from "./card/Card";
@@ -9,15 +10,9 @@ const PokeItem = ({
   setListCss,
   activeCards,
   setActiveCards,
-}: {
-  name: string;
-  url: string;
-  setListCss: any;
-  activeCards: any;
-  setActiveCards: any;
-}) => {
+}: PokeItemInterface) => {
   const [showPokemon, setShowPokemon] = useState(false);
-  const [pokemonData, setPokemonData]: [any, any] = useState(null);
+  const [cardData, setPokemonCardData] = useState<CardInterface>();
 
   //ref to scroll
   const myRef = useRef(null);
@@ -57,7 +52,7 @@ const PokeItem = ({
       let combinedJson = { pokemonDataById, pokemonDataSpecies };
       console.log("combined json is ", combinedJson);
       //update the state of the data we are going to pass
-      setPokemonData(combinedJson);
+      setPokemonCardData(combinedJson);
       //make the flag true so the pokeCard opens up
       setShowPokemon(true);
       //change the css of the List (css grid)
@@ -111,8 +106,8 @@ const PokeItem = ({
         >
           hide data
         </button>
-        {pokemonData ? (
-          <Card refProp={myRef} pokemonJson={pokemonData}></Card>
+        {cardData ? (
+          <Card refProp={myRef} pokemonJson={cardData}></Card>
         ) : (
           "loading data..."
         )}

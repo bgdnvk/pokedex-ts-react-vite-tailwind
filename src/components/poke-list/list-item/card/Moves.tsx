@@ -1,6 +1,10 @@
 import { useState } from "react"
+import { MovesInterface } from "../../../../interfaces/pokemonDataInterfaces"
 
-const Moves = ({moves}:{moves:any}) => {
+//TODO: https://stackoverflow.com/questions/38324949/error-ts2339-property-x-does-not-exist-on-type-y
+const Moves = ({moves}:any) => {
+    console.log('MOVES IS ', moves)
+    
     
     const [showMoves, setShowMoves] = useState(false)
 
