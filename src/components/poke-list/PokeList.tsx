@@ -1,5 +1,6 @@
 import { Key, useState } from "react";
-import { PokeListInterface, PokemonDataElement, PokemonDataElementWithUrl, PokemonJsonDataInterface } from "../../interfaces/pokemonDataInterfaces";
+import { PokemonDataElement, PokemonDataElementWithUrl } from "../../interfaces/pokemonDataInterfaces";
+import { PokeListInterface } from "./interface";
 import PokeItem from "./list-item/PokeItem";
 
 const PokeList = ({

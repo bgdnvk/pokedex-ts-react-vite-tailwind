@@ -14,11 +14,15 @@ export interface PokemonDataElementWithUrl extends PokemonDataElement {
   url: string;
 }
 
-//----- Components -------
-export interface PokeListInterface {
-    pokemonJsonData: PokemonJsonDataInterface | undefined;
-    formData: any;
+export interface ErrorInterface {
+    error: string;
 }
+
+//----- Components -------
+// export interface PokeListInterface {
+//     pokemonJsonData: PokemonJsonDataInterface | undefined;
+//     formData: any;
+// }
 
 export interface PokeItemInterface {
     name: string;
@@ -28,23 +32,25 @@ export interface PokeItemInterface {
     setActiveCards: any;
 }
 
-export interface SinglePokemonCardInterface {
+export interface PokemonByIdInterface {
     name: string;
     id: number;
     types: Array<any>;
     sprites: any;
     moves: Array<PokemonMoveInterface>;
+    species?: PokemonDataElementWithUrl;
+    error?: any;
 }
 
-export interface SpeciesPokemonCardInterface {
+export interface PokemonBySpeciesInterface {
     names: Array<any>;
     generation: PokemonDataElementWithUrl;
     flavor_text_entries: Array<any>;
 }
 
 export interface CardInterface {
-    pokemonDataById: SinglePokemonCardInterface;
-    pokemonDataSpecies: SpeciesPokemonCardInterface;
+    pokemonDataById: PokemonByIdInterface;
+    pokemonDataSpecies: PokemonBySpeciesInterface;
 }
 
 export interface PokemonMoveInterface {

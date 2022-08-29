@@ -1,5 +1,10 @@
 import { useRef, useState } from "react";
-import { CardInterface, PokeItemInterface } from "../../../interfaces/pokemonDataInterfaces";
+import {
+  CardInterface,
+  PokeItemInterface,
+  PokemonByIdInterface,
+  PokemonBySpeciesInterface,
+} from "../../../interfaces/pokemonDataInterfaces";
 import PokemonService from "../../../services/PokemonData";
 import stringUtils from "../../../utils/stringUtils";
 import Card from "./card/Card";
@@ -16,20 +21,20 @@ const PokeItem = ({
 
   //ref to scroll
   const myRef = useRef(null);
-//   const executeScroll = (
-//     ref:
-//       | {
-//           current: {
-//             scrollIntoView: (arg0: { behavior: string; block: string }) => void;
-//           };
-//         }
-//       | undefined
-//   ) => {
-//     if (ref && ref.current /* + other conditions */) {
-//       ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
-//     }
-//     // myRef.current?.scrollIntoView()
-//   };
+  //   const executeScroll = (
+  //     ref:
+  //       | {
+  //           current: {
+  //             scrollIntoView: (arg0: { behavior: string; block: string }) => void;
+  //           };
+  //         }
+  //       | undefined
+  //   ) => {
+  //     if (ref && ref.current /* + other conditions */) {
+  //       ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
+  //     }
+  //     // myRef.current?.scrollIntoView()
+  //   };
 
   const showCardButton = async () => {
     //get pokemon data
@@ -39,15 +44,23 @@ const PokeItem = ({
       //get the id thro a regex functions
       const pokemonId = stringUtils.getIdFromUrl(url);
       //get the data
-      const pokemonDataById = await PokemonService.getPokemonById(pokemonId);
+      const pokemonDataById: PokemonByIdInterface =
+        await PokemonService.getPokemonById(pokemonId);
       console.log("data by id", pokemonDataById);
       console.log(typeof pokemonDataById);
-      //TODO: better typesafety and errors
-      const pokemonDataSpecies = await PokemonService.getPokemonData(
-        `${pokemonDataById?.species?.url}`
-      );
-      console.log("data from species", pokemonDataSpecies);
 
+      //TODO: make it cleaner?
+      //get the species url since the id for species data is different from pokemonId
+      let speciesUrl: string = "";
+      if (pokemonDataById.species?.url) {
+        speciesUrl = stringUtils.getSpeciesIdFromUrl(
+          pokemonDataById.species?.url
+        );
+      }
+      //assign the species data
+      const pokemonDataSpecies: PokemonBySpeciesInterface =
+        await PokemonService.getPokemonBySpeciesId(`${speciesUrl}`);
+      console.log("data from species", pokemonDataSpecies);
       //since we had to make 2 calles to the pokeapi we combine the data to pass it as a single object
       let combinedJson = { pokemonDataById, pokemonDataSpecies };
       console.log("combined json is ", combinedJson);
@@ -61,7 +74,7 @@ const PokeItem = ({
       const newActiveCards = activeCards + 1;
       setActiveCards(newActiveCards);
     } catch (err) {
-      console.log("POKEMON DATA IS ERROR", err);
+      console.log("POKEMON DATA ERROR", err);
     }
   };
 

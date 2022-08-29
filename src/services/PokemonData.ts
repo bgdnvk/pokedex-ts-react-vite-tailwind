@@ -1,3 +1,5 @@
+import { ErrorInterface, PokemonByIdInterface, PokemonBySpeciesInterface } from "../interfaces/pokemonDataInterfaces";
+
 interface PokemonData {
     count: number,
     next: any,
@@ -34,7 +36,19 @@ const getAllPokemon = async (): Promise<PokemonData> => {
   }
 };
 
-const getPokemonById = async (id: string): Promise<DataFromId> => {
+const getPokemonBySpeciesId = async (id: String): Promise<PokemonBySpeciesInterface> => {
+  try {
+    const data = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
+    const jsonData = await data.json();
+    // console.log(jsonData);
+    return jsonData;
+  } catch (err) {
+    console.log(`error loading data ${err}`);
+    throw new Error
+  }
+}
+
+const getPokemonById = async (id: string): Promise<PokemonByIdInterface> => {
   try {
     const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
     const jsonData = await data.json();
@@ -42,12 +56,7 @@ const getPokemonById = async (id: string): Promise<DataFromId> => {
     return jsonData;
   } catch (err) {
     console.log(`error loading data ${err}`);
-    return {
-      "error": `${err}`,
-      species: {
-        url: 'none'
-      }
-    }
+    throw new Error
   }
 };
 
@@ -60,9 +69,7 @@ const getPokemonData = async (params: string): Promise<any> => {
     return jsonData
   } catch (err) {
     console.log(`error loading data ${err}`);
-    return {
-        "error": `${err}`
-    }
+    throw new Error
   }
   
 }
@@ -87,4 +94,4 @@ const getPokemonAndSpecies = async (query1: any, query2: any): Promise<any> => {
   
 }
 
-export default { getAllPokemon, getPokemonById, getPokemonData, getPokemonAndSpecies };
+export default { getAllPokemon, getPokemonById, getPokemonData, getPokemonAndSpecies, getPokemonBySpeciesId };
