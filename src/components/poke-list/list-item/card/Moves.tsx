@@ -1,8 +1,8 @@
-import { useState } from "react"
+import { Key, useState } from "react"
 import { MovesInterface } from "../../../../interfaces/pokemonDataInterfaces"
 
 //TODO: https://stackoverflow.com/questions/38324949/error-ts2339-property-x-does-not-exist-on-type-y
-const Moves = ({moves}:any) => {
+const Moves = ({moves}:MovesInterface) => {
     console.log('MOVES IS ', moves)
     
     
@@ -16,7 +16,7 @@ const Moves = ({moves}:any) => {
             onClick={() => setShowMoves(!showMoves)}>hide moves</button>
             <p>moves</p>
             <ul>
-                {moves.map((e: any, _i:any) => <li key={_i}>{e.move.name}</li>)}
+                {moves.map((e, _i:Key) => <li key={_i}>{e.move.name}</li>)}
             </ul>
             <br></br>
         </div>

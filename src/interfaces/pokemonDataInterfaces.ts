@@ -14,15 +14,6 @@ export interface PokemonDataElementWithUrl extends PokemonDataElement {
   url: string;
 }
 
-export interface MovesInterface {
-    [index: number]: {
-        move: Array<PokemonDataElement>,
-        version_group_details: {
-            [key: number]: any
-        }
-    }
-}
-
 //----- Components -------
 export interface PokeListInterface {
     pokemonJsonData: PokemonJsonDataInterface | undefined;
@@ -44,4 +35,15 @@ export interface CardInterface {
     pokemonDataSpecies: {
         [key: string]: any
     }
+}
+
+export interface PokemonMoveInterface {
+    move: PokemonDataElementWithUrl,
+    version_group_details: [{
+        [key: number]: Array<any>
+    }]
+}
+
+export interface MovesInterface {
+    moves: PokemonMoveInterface[];
 }
