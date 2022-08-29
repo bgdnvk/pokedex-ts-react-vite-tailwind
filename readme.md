@@ -32,4 +32,7 @@ https://tailwind-elements.com/quick-start/
 https://reactrouter.com/docs/en/v6/getting-started/tutorial
 
 # pagination
-https://levelup.gitconnected.com/a-simple-guide-to-pagination-in-react-facd6f785bd0
+https://levelup.gitconnected.com/a-simple-guide-to-pagination-in-react-facd6f785bd0  
+
+# colocation
+https://kentcdodds.com/blog/colocation

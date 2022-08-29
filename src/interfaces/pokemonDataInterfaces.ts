@@ -28,13 +28,23 @@ export interface PokeItemInterface {
     setActiveCards: any;
 }
 
+export interface SinglePokemonCardInterface {
+    name: string;
+    id: number;
+    types: Array<any>;
+    sprites: any;
+    moves: Array<PokemonMoveInterface>;
+}
+
+export interface SpeciesPokemonCardInterface {
+    names: Array<any>;
+    generation: PokemonDataElementWithUrl;
+    flavor_text_entries: Array<any>;
+}
+
 export interface CardInterface {
-    pokemonDataById: {
-        [key: string]: any
-    },
-    pokemonDataSpecies: {
-        [key: string]: any
-    }
+    pokemonDataById: SinglePokemonCardInterface;
+    pokemonDataSpecies: SpeciesPokemonCardInterface;
 }
 
 export interface PokemonMoveInterface {

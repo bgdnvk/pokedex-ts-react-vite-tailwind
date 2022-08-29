@@ -1,12 +1,13 @@
 import { useEffect } from "react"
+import { CardInterface, SinglePokemonCardInterface, SpeciesPokemonCardInterface } from "../../../../interfaces/pokemonDataInterfaces"
 import Moves from "./Moves"
 
-const Card = ({pokemonJson, refProp}: any) => {
+const Card = ({pokemonJson, refProp}: {pokemonJson: CardInterface, refProp: any}) => {
 
     console.log('---------inside card', pokemonJson)
     
-    const singlePokemonData = pokemonJson.pokemonDataById
-    const speciesPokemondata = pokemonJson.pokemonDataSpecies
+    const singlePokemonData: SinglePokemonCardInterface = pokemonJson.pokemonDataById
+    const speciesPokemondata: SpeciesPokemonCardInterface = pokemonJson.pokemonDataSpecies
 
     console.log('data by id',singlePokemonData)
     console.log(pokemonJson)
