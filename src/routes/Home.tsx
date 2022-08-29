@@ -4,35 +4,17 @@ import PokeList from "../components/poke-list/PokeList";
 import PokemonService from "../services/PokemonData";
 
 interface PokemonData {
-  count?: number;
-  next?: any;
-  previous?: any;
+  count: number;
+  next: any | null;
+  previous?: any | null;
   results?: Array<any>;
 }
 
 const Home = () => {
   const [formData, setFormData] = useState("");
-//   const [pokemon, setPokemon] = useState("");
-//   const [pokemonJson, setPokemonJson] = useState(null);
-  const [allPokemon, setAllPokemon] = useState<PokemonData | null>(null);
-
-//   const loadPokemonData = async (userInput: string): Promise<any> => {
-//     console.log(`user input: ${userInput}`);
-
-//     try {
-//       const data = await fetch(
-//         `https://pokeapi.co/api/v2/pokemon/${userInput}`
-//       );
-//       const jsonData = await data.json();
-//       console.log(jsonData);
-//       setPokemonJson(jsonData);
-//       return jsonData;
-//     } catch (error) {
-//       console.log(`error loading data ${error}`);
-//       setPokemonJson(null);
-//       return "err";
-//     }
-//   };
+  const [pokemonJsonData, setPokemonJsonData] = useState<PokemonData | null>(
+    null
+  );
 
   useEffect(() => {
     let fetchData: boolean = false;
@@ -42,7 +24,7 @@ const Home = () => {
     const getData = async () => {
       fetchData = true;
       data = PokemonService.getAllPokemon();
-      setAllPokemon(await data);
+      setPokemonJsonData(await data);
     };
 
     return () => {
@@ -71,12 +53,12 @@ const Home = () => {
 
   return (
     <main>
-      <SearchForm
-        handleChange={handleChange}
-        formData={formData}
-      ></SearchForm>
+      <SearchForm handleChange={handleChange} formData={formData}></SearchForm>
 
-      <PokeList allPokemon={allPokemon} formData={formData}></PokeList>
+      <PokeList
+        pokemonJsonData={pokemonJsonData}
+        formData={formData}
+      ></PokeList>
     </main>
   );
 };
