@@ -1,13 +1,13 @@
 import { useRef, useState } from "react";
 import {
-  CardInterface,
-  PokeItemInterface,
   PokemonByIdInterface,
   PokemonBySpeciesInterface,
 } from "../../../interfaces/pokemonDataInterfaces";
 import PokemonService from "../../../services/pokemonDataService";
 import stringUtils from "../../../utils/stringUtils";
 import Card from "./card/Card";
+import { CardInterface } from "./card/interfaces";
+import { PokeItemInterface } from "./interfaces";
 
 const PokeItem = ({
   name,

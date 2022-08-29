@@ -1,5 +1,6 @@
 import { Key, useState } from "react"
-import { MovesInterface } from "../../../../interfaces/pokemonDataInterfaces"
+import { MovesInterface } from "./interfaces"
+
 
 //TODO: https://stackoverflow.com/questions/38324949/error-ts2339-property-x-does-not-exist-on-type-y
 const Moves = ({moves}:MovesInterface) => {

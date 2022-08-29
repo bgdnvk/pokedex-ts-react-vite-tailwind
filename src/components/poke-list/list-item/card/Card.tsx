@@ -1,5 +1,6 @@
 import { useEffect } from "react"
-import { CardInterface, PokemonByIdInterface, PokemonBySpeciesInterface } from "../../../../interfaces/pokemonDataInterfaces"
+import { PokemonByIdInterface, PokemonBySpeciesInterface } from "../../../../interfaces/pokemonDataInterfaces"
+import { CardInterface } from "./interfaces"
 import Moves from "./Moves"
 
 const Card = ({pokemonJson, refProp}: {pokemonJson: CardInterface, refProp: any}) => {
