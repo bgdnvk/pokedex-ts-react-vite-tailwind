@@ -1,5 +1,6 @@
 import { Key, useState } from "react";
 import { PokemonDataElement, PokemonDataElementWithUrl } from "../../interfaces/pokemonDataInterfaces";
+import Spinner from "../Spinner";
 import { PokeListInterface } from "./interfaces";
 import PokeItem from "./list-item/PokeItem";
 
@@ -12,6 +13,12 @@ const PokeList = ({
   );
   //flex-wrap p-6 divide-y divide-slate-200 border-2 border-red-500
   const [activeCards, setActiveCards] = useState(0);
+
+  if(!pokemonJsonData){
+    return (
+      <Spinner></Spinner>
+    )
+  }
 
   return (
     <div className="relative">
