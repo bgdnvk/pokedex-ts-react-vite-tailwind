@@ -1,3 +1,10 @@
+# WIP project for blog
+## TODOs
+## add saved pokemon page (redux?)  
+## refactor/clean
+
+
+
 npm create vite@latest  
 npm i
 npm run dev
